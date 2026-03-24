@@ -40,5 +40,3 @@ The project is structured around several core version control concepts:
 - **Commits & Trees:** Storing snapshots of the project directory and associating them with commit metadata.
 - **History & Logs:** Maintaining a linear history of commits.
 - **Checkout:** Restoring working directory files to a specific previous state.
-
-*More details to be updated in subsequent tasks.*
