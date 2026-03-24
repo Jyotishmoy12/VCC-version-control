@@ -53,15 +53,6 @@ flowchart TD
     Tree2 -->|blob: README.md| BlobReadme["Blob\n(README.md content)"]
     
     Tree1 -->|blob: README.md| BlobReadme
-    
-    %% Styling
-    classDef commit fill:#fce4ec,stroke:#c2185b,stroke-width:2px;
-    classDef tree fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
-    classDef blob fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
-    
-    class Commit1,Commit2 commit;
-    class Tree1,Tree2 tree;
-    class BlobMain,BlobReadme blob;
 ```
 
 ### 1. Blobs (Binary Large Objects)
