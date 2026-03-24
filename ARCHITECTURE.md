@@ -65,5 +65,3 @@ Below is a detailed breakdown of each class and its internal functions responsib
 | `TreeManager` | `read_index` | Reads the `.vcc/index` file to retrieve the current staged files and their hashes. |
 | `Utils` | `read_file` | Reads and returns the entire binary content of a file given its path. |
 | `Utils` | `write_file` | Writes binary content to a specified file path, overwriting it if it exists. |
-
-*(Note: Command-line interface usage and specific terminal commands will be added in a future update).*
