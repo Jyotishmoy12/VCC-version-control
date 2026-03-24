@@ -4,6 +4,28 @@
 
 VCC is a lightweight, custom-built Version Control System clone developed in C++. It provides fundamental version control functionalities designed to track changes, manage repositories, and handle basic operations similar to Git.
 
+## Getting Started (Compilation & Testing)
+
+If you'd like to copy the code, build the project yourself, and test the version control functionalities:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Jyotishmoy12/VCC-version-control.git
+   cd VCC-version-control
+   ```
+
+2. **Compile the executable:**
+   Since VCC utilizes modern C++ features like `<filesystem>`, you must compile it with C++17 or higher. To compile using `g++`, run the following command from the root of the project:
+   ```bash
+   g++ -std=c++17 src/main.cpp -o vcc.exe
+   ```
+
+3. **Run your first command:**
+   Once successfully compiled, you can initialize your first repository test:
+   ```powershell
+   .\vcc.exe init
+   ```
+
 ### Features (What It Can Do)
 - **Local Repository Initialization:** Creates a `.vcc` database to track history securely.
 - **Content-Addressable Staging:** Stages files by hashing their exact binary content using SHA-1.
