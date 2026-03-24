@@ -37,27 +37,31 @@ Path: `.vcc/objects/a1/b2c3d4e5f6...`
 
 ## Object Types
 
-VCC utilizes three core data structures, all stored as hashed objects within the `.vcc/objects/` directory. The relationship between these objects is deterministic and forms the backbone of a repository's linear history:
+VCC utilizes three core data structures, all stored as hashed objects within the `.vcc/objects/` directory. 
+
+Here is a practical example showing how these objects link together to form a history graph (notice how both trees share the same `README.md` blob, seamlessly demonstrating data deduplication):
 
 ```mermaid
-classDiagram
-    class Commit {
-        +String tree_hash
-        +String parent_hash
-        +String author
-        +String message
-    }
-    class Tree {
-        +List~TreeEntry~ entries
-    }
-    class Blob {
-        +Binary data
-    }
+flowchart TD
+    %% Commits
+    Commit2["Commit 2\n(added main.cpp)"] -->|Parent| Commit1["Commit 1\n(initial)"]
+    Commit2 -->|Tree| Tree2["Tree 2\n(Root Directory)"]
+    Commit1 -->|Tree| Tree1["Tree 1\n(Root Directory)"]
+
+    %% Trees
+    Tree2 -->|blob: main.cpp| BlobMain["Blob\n(main.cpp content)"]
+    Tree2 -->|blob: README.md| BlobReadme["Blob\n(README.md content)"]
     
-    Commit "1" --> "1" Tree : points to root
-    Commit "1" --> "0..1" Commit : points to parent
-    Tree "1" *-- "*" Blob : maps to file data
-    Tree "1" *-- "*" Tree : maps to subdirectories (future)
+    Tree1 -->|blob: README.md| BlobReadme
+    
+    %% Styling
+    classDef commit fill:#fce4ec,stroke:#c2185b,stroke-width:2px;
+    classDef tree fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef blob fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    
+    class Commit1,Commit2 commit;
+    class Tree1,Tree2 tree;
+    class BlobMain,BlobReadme blob;
 ```
 
 ### 1. Blobs (Binary Large Objects)
