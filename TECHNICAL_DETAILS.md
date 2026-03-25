@@ -2,6 +2,16 @@
 
 VCC (Version Control Clone) relies heavily on content-addressable storage, cryptographic hashing, and a strictly structured hidden directory (`.vcc`) to immutably track a repository's graph of history. 
 
+Git is essentially a content-addressable key–value storage system. Every piece of data (such as files and commits) is stored as an object and identified by a SHA-1 hash of its contents. Git uses this hash as the object’s name.
+
+These objects are stored inside the `.git/objects` directory. To organize them efficiently, Git uses the first two characters of the hash as a folder name and the remaining characters as the file name. The file contains the compressed object data.
+
+Depending on the object type, it may store:
+
+* a **blob** (file contents),
+* a **tree** (directory structure), or
+* a **commit** (metadata and history).
+
 This document provides a deep, low-level look into the exact data structures, algorithms, and hashing mechanisms powering VCC.
 
 ## The `.vcc` internal database
